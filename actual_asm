@@ -1,0 +1,26 @@
+nop
+nop
+addi x1,zero,4
+addi x2,zero,16
+addi x3,zero,8
+addi x6,zero,32
+sw x6,0(zero)
+lw x2,0(zero) # too much stall?
+sub x8,x2,x6 #this instruction gets skipped? bubble issue
+add x4,x1,x2
+add x5,x4,x3
+addi x7,zero,5
+START: 
+addi x7,x7,-1
+bne x7,zero,START
+add x8,x7,x3
+nop
+nop
+nop
+on RAM
+nop 
+nop
+addi x2,x0,0
+START:
+addi x2,x2,1
+bne x2,zero,START
